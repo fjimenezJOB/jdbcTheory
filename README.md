@@ -7,6 +7,13 @@ This is a template project for a Java webapp that runs on Tomcat and uses a Mave
 
 [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/jamesward/hello-java-webapp_runner)
 
+
+-Para ejecutarlo desde la Commandline sin la instalación de Tomcat, ya que tomcat está embebido por
+webapprunner.
+
+C:\Users\jordi\Downloads\webapprunner\hello-java-webapp_runner-master>
+java -jar target/dependency/webapp-runner-7.0.57.1.jar --port 8080 target/hellojavawebapprunner.war
+
 -Para Ejecutarlo en tu docker local (siempre ejecutas estos comandos en el directorio de la dockerfile)
 
 mvn clean package
