@@ -36,6 +36,8 @@ heroku container:push web --app myfirst-bit-webapp
 
 heroku container:release web --app myfirst-bit-webapp
 
+heroku open --app myfirst-bit-webapp
+
 -url de mi heroku con mi docker container:
 
 https://myfirst-bit-webapp.herokuapp.com/
