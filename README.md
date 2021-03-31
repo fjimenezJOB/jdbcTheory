@@ -7,18 +7,28 @@ This is a template project for a Java webapp that runs on Tomcat and uses a Mave
 
 [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/jamesward/hello-java-webapp_runner)
 
-Para Ejecutarlo en tu docker local (siempre ejecutas estos comandos en el directorio de la dockerfile)
+-Para Ejecutarlo en tu docker local (siempre ejecutas estos comandos en el directorio de la dockerfile)
+
 mvn clean package
+
 docker build -t jordiascension/hello-java:1.0 .
+
 docker run -p 8081:8080 -e PORT=8080 jordiascension/hello-java:1.0  
 
-Para Realizar un deploy a Heroku (siempre ejecutas estos comandos en el directorio de la dockerfile)
+-Para Realizar un deploy a Heroku (siempre ejecutas estos comandos en el directorio de la dockerfile)
+
 mvn clean package
+
 heroku login
+
 heroku container:login
+
 - Aquí debes de poner el nombre de tu app
+
 heroku container:push web --app myfirst-bit-webapp
+
 heroku container:release web --app myfirst-bit-webapp
 
-url de mi heroku con mi docker container:
+-url de mi heroku con mi docker container:
+
 https://myfirst-bit-webapp.herokuapp.com/
