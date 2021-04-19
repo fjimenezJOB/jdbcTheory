@@ -1,43 +1,42 @@
-Hello Java Webapp Runner
-------------------------
+# JDBC Theory WebApp
+Es un proyecto simple para la practica de Java JSP con conexion a base de datos ClearDB de Heroku.
+## Funciones:
+- Insertar invitados en la base de datos (Nombre, Apellidos y Gmail)
+- Enseñar una lista de los invitados
+- Hacer Update y Delete de los invitados
+- Enseñar una lista de la tabla de Productos
 
-This is a template project for a Java webapp that runs on Tomcat and uses a Maven build to manage the Tomcat dependency.
+En las proximas actualizaciones también tendrá conexion con una base de datos de MongoDB.
 
-[More info about this](http://www.jamesward.com/2012/02/15/webapp-runner-apache-tomcat-as-a-dependency)
+## Para ejecutarlo desde la terminal sin la instalación de Tomcat, ya que tomcat está embebido por webapprunner.
 
-[![Deploy on Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/jamesward/hello-java-webapp_runner)
+### Terminal en el directorio del proyecto, ejecutamos los siguientes comandos:
+- java -jar target/dependency/webapp-runner-7.0.57.1.jar --port 8080 target/webapp.war
 
+## Para Ejecutarlo en tu docker local: (siempre ejecutas estos comandos en el directorio de la dockerfile)
+(Cambia "dockerHubUser" por tu usuario de DockerHub)
+- mvn clean package
 
--Para ejecutarlo desde la Commandline sin la instalación de Tomcat, ya que tomcat está embebido por
-webapprunner.
+- docker build -t dockerHubUser/webapp:1.0 .
 
-C:\Users\jordi\Downloads\webapprunner\hello-java-webapp_runner-master>
-java -jar target/dependency/webapp-runner-7.0.57.1.jar --port 8080 target/hellojavawebapprunner.war
+- docker run -p 8081:8080 -e PORT=8080 dockerHubUser/webapp:1.0
 
--Para Ejecutarlo en tu docker local (siempre ejecutas estos comandos en el directorio de la dockerfile)
+Mi Link de DockerHub: https://hub.docker.com/repository/docker/fjimenezjob/webapp
 
-mvn clean package
+## Para Realizar un deploy a Heroku (siempre ejecutas estos comandos en el directorio de la dockerfile)
 
-docker build -t jordiascension/hello-java:1.0 .
+- mvn clean package
 
-docker run -p 8081:8080 -e PORT=8080 jordiascension/hello-java:1.0  
+- heroku login
 
--Para Realizar un deploy a Heroku (siempre ejecutas estos comandos en el directorio de la dockerfile)
+Con tu Docker local arrancado ejecuta los siguientes comandos:
+- heroku container:login
 
-mvn clean package
+(Cambia "nombreApp" por el nombre de tu app en Heroku)
+- heroku container:push web --app nombreApp
 
-heroku login
+- heroku container:release web --app nombreApp
 
-heroku container:login
+- heroku open --app nombreApp
 
-- Aquí debes de poner el nombre de tu app
-
-heroku container:push web --app myfirst-bit-webapp
-
-heroku container:release web --app myfirst-bit-webapp
-
-heroku open --app myfirst-bit-webapp
-
--url de mi heroku con mi docker container:
-
-https://myfirst-bit-webapp.herokuapp.com/
+Mi link de Heroku: https://javafirstwebapp.herokuapp.com/index.jsp
