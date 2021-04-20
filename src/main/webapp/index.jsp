@@ -17,5 +17,6 @@
 <br>
 <a href="<%= response.encodeURL(request.getContextPath() + "/showGuests.jsp") %>"> Show Guests </a>
 <a href="<%= response.encodeURL(request.getContextPath() + "/showProducts.jsp") %>">Show Products</a>
+<a href="<%= response.encodeURL(request.getContextPath() + "/showCustomers.jsp") %>">Show Customers MongoDB</a>
 </body>
 </html>

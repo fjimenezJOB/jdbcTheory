@@ -1,0 +1,20 @@
+
+use('netmind');
+const aggregation = [
+  {$lookup:{from: "instruments", localField: "_id", foreignField: "artist_id", as: "band_members"}},
+  {$match : {artistname : "UVW"}}
+];
+
+db.REFERENCE_MODEL.insertOne ({
+    heading: 'Life of an awesome girl',
+    publish_date: '2016-11-27',
+    description: 'An awesome girl...',
+    permalink: 'http://awesomeblog.com/2016/12/life-of-an-awesome-girl',
+    categories: ['Make', 'Travel', 'Fiction', 'girl'],likes: 56,
+           testimonials: {
+           "$ref": "testimonal",
+           "$id": ObjectId("607f0760a01f88820c59e32a")}
+    });
+
+
+db.singers.aggregate(aggregation).pretty();
