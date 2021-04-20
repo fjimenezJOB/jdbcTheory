@@ -21,6 +21,7 @@
 *.json
 *.txt
 .vscode/
+.idea
 output/
 .settings/
 target/

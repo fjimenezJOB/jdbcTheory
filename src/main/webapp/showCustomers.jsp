@@ -1,40 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="com.mongodb.Mongo" %>
-<%@ page import= "org.apache.log4j.Logger" %>
+<%@ page import="org.apache.log4j.Logger"%>
+<%@ page import="org.dbconection.MongoConnection"%>
+<%@ page import="com.mongodb.client.MongoCollection"%>
+<%@ page import="com.mongodb.client.MongoCursor"%>
+<%@ page import="com.mongodb.client.MongoDatabase"%>
+<%@ page import="com.mongodb.MongoClientSettings"%>
+<%@ page import="com.mongodb.client.FindIterable"%>
+<%@ page import="org.bson.Document" %>
 <html>
 <body>
 
 <% 
+    MongoCursor cursor;
     try {
-        MongoClient client = new MongoClient(ServerAddress("mongodb+srv://franjimenez:Francisco1231998@develop.0hasi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
-        
-    }catch(Exception e){
-        e.printStackTrace();
-    }
+        MongoDatabase db = MongoConnection.getConnection();
+        MongoCollection<Document> collection = db.getCollection("customers");
+        cursor = collection.find().iterator();
+        while (cursor.hasNext()){
+            out.write(cursor.next().toString());
+            System.out.println(cursor.next());
+        }
 
+    }catch (Exception e){ e.printStackTrace();}
 %>
-
-<% MongoClient mongoClient = null;
-
-DB db = mongoClient.getDB("testdoc");
-DBCollection coll;
-coll = db.getCollection("testdoc");
-BasicDBObject doc = new BasicDBObject("Number1", 1).
-        append("Number2", 2).append("Number3", 3);
-
-//System.out.println("Data Display");
-coll.insert(doc);
-DBCursor cursor = coll.find();
-try {
-   while(cursor.hasNext()) {
-       System.out.println(cursor.next());
-   }
-} finally {
-   //mongoClient.dropDatabase("test");
-   cursor.close();
-
-}
-    %>
 </body>
 </html>
